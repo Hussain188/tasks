@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Customer Survey Form</title>
+    <style>
+        /* Your CSS styles */
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #ece8e8;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-group button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Customer Survey Form</h1>
+        <form id="survey-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name "email" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Select a rating</option>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Average</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Very Poor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="feedback">Feedback</label>
+                <textarea id="feedback" name="feedback" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="subscribe">Subscribe to our newsletter</label>
+                <input type="checkbox" id="subscribe" name="subscribe">
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submit-btn">Submit</button>
+                <button type="button" id="reset-btn">Reset</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('survey-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var mobile = document.getElementById('mobile').value;
+            var rating = document.getElementById('rating').value;
+            var feedback = document.getElementById('feedback').value;
+            var subscribe = document.getElementById('subscribe').checked;
+
+            // Perform validation (you can add more validation checks)
+            if (!name || !email || !mobile || rating === "" || !feedback) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Simulate a successful submission with a delay
+            setTimeout(function () {
+                alert('Thank you for your feedback!');
+                // Reset the form
+                document.getElementById('survey-form').reset();
+                document.getElementById('submit-btn').disabled = false; // Re-enable the submit button
+            }, 1000); // You can adjust the delay as needed
+        });
+
+        // Reset button functionality
+        document.getElementById('reset-btn').addEventListener('click', function () {
+            document.getElementById('survey-form').reset();
+        });
+    </script>
+</body>
+
+</html>
